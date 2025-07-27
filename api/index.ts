@@ -10,7 +10,14 @@ dotenv.config();
 ConnectDb();
 const app = express();
 
-app.use(cors());
+app.use(
+	cors({
+		origin: [
+			'http://localhost:5173', // Local development
+			'https://brain-keeper.vercel.app', // Your deployed frontend
+		],
+	})
+);
 app.use(express.json());
 
 // API routes
